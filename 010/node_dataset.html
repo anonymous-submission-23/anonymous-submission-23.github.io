@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datasets for Node-Level Problems &mdash; BeGin 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Datasets for Link-Level Problems" href="link_dataset.html" />
+    <link rel="prev" title="Tutorial" href="../000/tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> BeGin
+          </a>
+              <div class="version">
+                0.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../000/install.html">Install and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../000/tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Datasets</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Datasets for Node-Level Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cora">Cora</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#citeseer">Citeseer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ogbn-proteins">ogbn-proteins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ogbn-arxiv">ogbn-arxiv</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="link_dataset.html">Datasets for Link-Level Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_dataset.html">Datasets for Graph-Level Problems</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../030/common.html">Common framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../030/node.html">Node-level problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../030/link.html">Link-level problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../030/graph.html">Graph-level problems</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Trainer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../040/common.html">Common framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../040/node.html">Node-level problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../040/link.html">Link-level problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../040/graph.html">Graph-level problems</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Continual Learning Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../050/bare.html">Bare Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../050/lwf.html">LwF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../050/ewc.html">EWC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../050/mas.html">MAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../050/gem.html">GEM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../050/twp.html">TWP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../050/ergnn.html">ER-GNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../050/cgnn.html">ContinualGNN</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Evaluator</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../060/performance.html">Basic Performance Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../060/metric.html">Metrics for CL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../070/linear.html">AdaptiveLinear</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BeGin</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Datasets for Node-Level Problems</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/010/node_dataset.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="datasets-for-node-level-problems">
+<h1>Datasets for Node-Level Problems<a class="headerlink" href="#datasets-for-node-level-problems" title="Permalink to this heading"></a></h1>
+<section id="cora">
+<h2>Cora<a class="headerlink" href="#cora" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://docs.dgl.ai/generated/dgl.data.CoraGraphDataset.html">Cora</a> is a citation network. Each node is a scientific publication,
+and its class is the field of the publication. Based on selected six classes (among seven classes) in each dataset, we formulate
+three binary classification tasks for Task-IL and three tasks with 2, 4, and 6 classes for Class-IL.</p>
+<p>Statistics:</p>
+<ul>
+<li><p>Nodes: 2.708</p></li>
+<li><p>Edges: 10.556</p></li>
+<li><p>Number of Node Features: 1,433</p></li>
+<li><p>Number of Classes: 7</p></li>
+<li><p>Supported Incremental Settings:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Task-IL with 3 tasks</p></li>
+<li><p>Class-IL with 3 tasks</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="citeseer">
+<h2>Citeseer<a class="headerlink" href="#citeseer" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://docs.dgl.ai/generated/dgl.data.CiteseerGraphDataset.html">Citeseer</a> is a citation network. Each node is a scientific publication,
+and its class is the field of the publication. Based on six classes in each dataset, we formulate
+three binary classification tasks for Task-IL and three tasks with 2, 4, and 6 classes for Class-IL.</p>
+<p>Statistics:</p>
+<ul>
+<li><p>Nodes: 3,327</p></li>
+<li><p>Edges: 9,104</p></li>
+<li><p>Number of Node Features: 3,703</p></li>
+<li><p>Number of Classes: 6</p></li>
+<li><p>Supported Incremental Settings:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Task-IL with 3 tasks</p></li>
+<li><p>Class-IL with 3 tasks</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="ogbn-proteins">
+<h2>ogbn-proteins<a class="headerlink" href="#ogbn-proteins" title="Permalink to this heading"></a></h2>
+<p>Nodes in <a class="reference external" href="https://ogb.stanford.edu/docs/nodeprop/#ogbn-proteins">ogbn-proteins</a> are proteins, and edges indicate
+meaningful associations between proteins. For each protein, 112 binary classes, which indicate the
+presence of 112 functions, are available. Each protein belongs to one among 8 species, which are
+used as domains in Domain-IL. Each of the 8 task consists of 112 binary-classification problems.</p>
+<p>Statistics:</p>
+<ul>
+<li><p>Nodes: 132,534</p></li>
+<li><p>Edges: 39,561,252</p></li>
+<li><p>Number of Edge Features: 8</p></li>
+<li><p>Number of Classes: 2x112 (112 binary classes)</p></li>
+<li><p>Supported Incremental Settings:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Domain-IL with 8 tasks</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="ogbn-arxiv">
+<h2>ogbn-arxiv<a class="headerlink" href="#ogbn-arxiv" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://ogb.stanford.edu/docs/nodeprop/#ogbn-arxiv">ogbn-arxiv</a> is a citation network, where each node is a
+research paper, and its class belongs to 40 subject areas, which are divided into 8 groups for Task-
+IL. Similarly, the number of classes increase by 5 in each task in Class-IL. Publication years are
+used to form 11 groups for the Time-IL setting.</p>
+<p>Statistics:</p>
+<ul>
+<li><p>Nodes: 169,343</p></li>
+<li><p>Edges: 2,232,486</p></li>
+<li><p>Number of Node Features: 128</p></li>
+<li><p>Number of Classes: 40</p></li>
+<li><p>Supported Incremental Settings:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Task-IL with 8 tasks</p></li>
+<li><p>Class-IL with 8 tasks</p></li>
+<li><p>Time-IL with 11 tasks</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../000/tutorial.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="link_dataset.html" class="btn btn-neutral float-right" title="Datasets for Link-Level Problems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Anonymous.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
