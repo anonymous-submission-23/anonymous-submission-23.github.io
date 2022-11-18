@@ -74,6 +74,12 @@
 <li class="toctree-l1"><a class="reference internal" href="ewc.html">EWC</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">MAS</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-begin.algorithms.mas.nodes">Node-level Problems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#begin.algorithms.mas.nodes.NCClassILMASMinibatchTrainer"><code class="docutils literal notranslate"><span class="pre">NCClassILMASMinibatchTrainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#begin.algorithms.mas.nodes.NCClassILMASMinibatchTrainer.afterInference"><code class="docutils literal notranslate"><span class="pre">NCClassILMASMinibatchTrainer.afterInference()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#begin.algorithms.mas.nodes.NCClassILMASMinibatchTrainer.initTrainingStates"><code class="docutils literal notranslate"><span class="pre">NCClassILMASMinibatchTrainer.initTrainingStates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#begin.algorithms.mas.nodes.NCClassILMASMinibatchTrainer.processAfterTraining"><code class="docutils literal notranslate"><span class="pre">NCClassILMASMinibatchTrainer.processAfterTraining()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#begin.algorithms.mas.nodes.NCClassILMASTrainer"><code class="docutils literal notranslate"><span class="pre">NCClassILMASTrainer</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#begin.algorithms.mas.nodes.NCClassILMASTrainer.afterInference"><code class="docutils literal notranslate"><span class="pre">NCClassILMASTrainer.afterInference()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#begin.algorithms.mas.nodes.NCClassILMASTrainer.initTrainingStates"><code class="docutils literal notranslate"><span class="pre">NCClassILMASTrainer.initTrainingStates()</span></code></a></li>
@@ -202,6 +208,69 @@
 For the details, see the <a class="reference external" href="https://arxiv.org/pdf/1711.09601.pdf">original paper</a>.</p>
 <section id="module-begin.algorithms.mas.nodes">
 <span id="node-level-problems"></span><h2>Node-level Problems<a class="headerlink" href="#module-begin.algorithms.mas.nodes" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="begin.algorithms.mas.nodes.NCClassILMASMinibatchTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NCClassILMASMinibatchTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/begin/algorithms/mas/nodes.html#NCClassILMASMinibatchTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#begin.algorithms.mas.nodes.NCClassILMASMinibatchTrainer" title="Permalink to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="begin.algorithms.mas.nodes.NCClassILMASMinibatchTrainer.afterInference">
+<span class="sig-name descname"><span class="pre">afterInference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_curr_batch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_states</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/begin/algorithms/mas/nodes.html#NCClassILMASMinibatchTrainer.afterInference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#begin.algorithms.mas.nodes.NCClassILMASMinibatchTrainer.afterInference" title="Permalink to this definition"></a></dt>
+<dd><p>The event function to execute some processes right after the inference step (for training).
+We recommend performing backpropagation in this event function.</p>
+<p>MAS performs regularization process in this function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – the returned dictionary from the event function <cite>inference</cite>.</p></li>
+<li><p><strong>model</strong> (<em>torch.nn.Module</em>) – the current trained model.</p></li>
+<li><p><strong>optimizer</strong> (<em>torch.optim.Optimizer</em>) – the current optimizer function.</p></li>
+<li><p><strong>curr_batch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><em>object</em></a>) – the data (or minibatch) for the current iteration.</p></li>
+<li><p><strong>curr_training_states</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – the dictionary containing the current training states.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary containing the information from the <cite>results</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="begin.algorithms.mas.nodes.NCClassILMASMinibatchTrainer.initTrainingStates">
+<span class="sig-name descname"><span class="pre">initTrainingStates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/begin/algorithms/mas/nodes.html#NCClassILMASMinibatchTrainer.initTrainingStates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#begin.algorithms.mas.nodes.NCClassILMASMinibatchTrainer.initTrainingStates" title="Permalink to this definition"></a></dt>
+<dd><p>The event function to initialize the dictionary for storing training states (i.e., intermedeiate results).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scenario</strong> (<a class="reference internal" href="../030/common.html#begin.scenarios.common.BaseScenarioLoader" title="begin.scenarios.common.BaseScenarioLoader"><em>begin.scenarios.common.BaseScenarioLoader</em></a>) – the given ScenarioLoader to the trainer</p></li>
+<li><p><strong>model</strong> (<em>torch.nn.Module</em>) – the given model to the trainer</p></li>
+<li><p><strong>optmizer</strong> (<em>torch.optim.Optimizer</em>) – the optimizer generated from the given <cite>optimizer_fn</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Initialized training state (dict).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="begin.algorithms.mas.nodes.NCClassILMASMinibatchTrainer.processAfterTraining">
+<span class="sig-name descname"><span class="pre">processAfterTraining</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_training_states</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/begin/algorithms/mas/nodes.html#NCClassILMASMinibatchTrainer.processAfterTraining"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#begin.algorithms.mas.nodes.NCClassILMASMinibatchTrainer.processAfterTraining" title="Permalink to this definition"></a></dt>
+<dd><p>The event function to execute some processes after training the current task.</p>
+<p>MAS computes importances and stores the learned weights to compute the penalty term in <a class="reference internal" href="#begin.algorithms.mas.nodes.NCClassILMASMinibatchTrainer.afterInference" title="begin.algorithms.mas.nodes.NCClassILMASMinibatchTrainer.afterInference"><code class="xref py py-func docutils literal notranslate"><span class="pre">afterInference()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>task_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – the index of the current task.</p></li>
+<li><p><strong>curr_dataset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><em>object</em></a>) – The dataset for the current task.</p></li>
+<li><p><strong>curr_model</strong> (<em>torch.nn.Module</em>) – the current trained model.</p></li>
+<li><p><strong>curr_optimizer</strong> (<em>torch.optim.Optimizer</em>) – the current optimizer function.</p></li>
+<li><p><strong>curr_training_states</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – the dictionary containing the current training states.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="begin.algorithms.mas.nodes.NCClassILMASTrainer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NCClassILMASTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/begin/algorithms/mas/nodes.html#NCClassILMASTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#begin.algorithms.mas.nodes.NCClassILMASTrainer" title="Permalink to this definition"></a></dt>

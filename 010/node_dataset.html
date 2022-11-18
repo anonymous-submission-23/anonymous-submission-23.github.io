@@ -52,6 +52,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Datasets for Node-Level Problems</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#cora">Cora</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#citeseer">Citeseer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#corafull">CoraFull</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ogbn-products">ogbn-products</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ogbn-proteins">ogbn-proteins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ogbn-arxiv">ogbn-arxiv</a></li>
 </ul>
@@ -158,6 +160,48 @@ three binary classification tasks for Task-IL and three tasks with 2, 4, and 6 c
 <div><ul class="simple">
 <li><p>Task-IL with 3 tasks</p></li>
 <li><p>Class-IL with 3 tasks</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="corafull">
+<h2>CoraFull<a class="headerlink" href="#corafull" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://docs.dgl.ai/generated/dgl.data.CoraFullDataset.html">CoraFull</a> is a citation network. Each node is a scientific publication,
+and its class is the field of the publication.
+For CoraFull, we formulate 35 binary classification tasks for Task-IL.</p>
+<p>Statistics:</p>
+<ul>
+<li><p>Nodes: 19,793</p></li>
+<li><p>Edges: 126,842</p></li>
+<li><p>Number of Node Features: 8,710</p></li>
+<li><p>Number of Classes: 70</p></li>
+<li><p>Supported Incremental Settings:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Task-IL with 35 tasks</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="ogbn-products">
+<h2>ogbn-products<a class="headerlink" href="#ogbn-products" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://ogb.stanford.edu/docs/nodeprop/#ogbn-products">ogbn-products</a> is a co-purchase network, where each node
+is a product, and its class belongs to 47 categories, which are divided into 9 groups for Class-IL.
+The number of classes increase by 5 in each task, and two categories are not used.</p>
+<p>Statistics:</p>
+<ul>
+<li><p>Nodes: 2,449,029</p></li>
+<li><p>Edges: 61,859,140</p></li>
+<li><p>Number of Node Features: 100</p></li>
+<li><p>Number of Classes: 47</p></li>
+<li><p>Supported Incremental Settings:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Class-IL with 9 tasks</p></li>
 </ul>
 </div></blockquote>
 </li>

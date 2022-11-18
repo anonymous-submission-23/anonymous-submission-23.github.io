@@ -111,7 +111,7 @@
              
   <h1>Source code for begin.algorithms.bare.nodes</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">begin.trainers.nodes</span> <span class="kn">import</span> <span class="n">NCTrainer</span>
+<span class="kn">from</span> <span class="nn">begin.trainers.nodes</span> <span class="kn">import</span> <span class="n">NCTrainer</span><span class="p">,</span> <span class="n">NCMinibatchTrainer</span>
 
 <div class="viewcode-block" id="NCTaskILBareTrainer"><a class="viewcode-back" href="../../../../050/bare.html#begin.algorithms.bare.nodes.NCTaskILBareTrainer">[docs]</a><span class="k">class</span> <span class="nc">NCTaskILBareTrainer</span><span class="p">(</span><span class="n">NCTrainer</span><span class="p">):</span>
 <div class="viewcode-block" id="NCTaskILBareTrainer.inference"><a class="viewcode-back" href="../../../../050/bare.html#begin.algorithms.bare.nodes.NCTaskILBareTrainer.inference">[docs]</a>    <span class="k">def</span> <span class="nf">inference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">_curr_batch</span><span class="p">,</span> <span class="n">training_states</span><span class="p">):</span>
@@ -136,6 +136,12 @@
 <div class="viewcode-block" id="NCClassILBareTrainer"><a class="viewcode-back" href="../../../../050/bare.html#begin.algorithms.bare.nodes.NCClassILBareTrainer">[docs]</a><span class="k">class</span> <span class="nc">NCClassILBareTrainer</span><span class="p">(</span><span class="n">NCTrainer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This trainer has the same behavior as `NCTrainer`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="NCClassILBareMinibatchTrainer"><a class="viewcode-back" href="../../../../050/bare.html#begin.algorithms.bare.nodes.NCClassILBareMinibatchTrainer">[docs]</a><span class="k">class</span> <span class="nc">NCClassILBareMinibatchTrainer</span><span class="p">(</span><span class="n">NCMinibatchTrainer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This trainer has the same behavior as `NCMinibatchTrainer`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 

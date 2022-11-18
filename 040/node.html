@@ -64,6 +64,13 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="common.html">Common framework</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Node-level problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#begin.trainers.nodes.NCMinibatchTrainer"><code class="docutils literal notranslate"><span class="pre">NCMinibatchTrainer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#begin.trainers.nodes.NCMinibatchTrainer.afterInference"><code class="docutils literal notranslate"><span class="pre">NCMinibatchTrainer.afterInference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#begin.trainers.nodes.NCMinibatchTrainer.inference"><code class="docutils literal notranslate"><span class="pre">NCMinibatchTrainer.inference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#begin.trainers.nodes.NCMinibatchTrainer.prepareLoader"><code class="docutils literal notranslate"><span class="pre">NCMinibatchTrainer.prepareLoader()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#begin.trainers.nodes.NCMinibatchTrainer.processTrainingLogs"><code class="docutils literal notranslate"><span class="pre">NCMinibatchTrainer.processTrainingLogs()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#begin.trainers.nodes.NCTrainer"><code class="docutils literal notranslate"><span class="pre">NCTrainer</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#begin.trainers.nodes.NCTrainer.afterInference"><code class="docutils literal notranslate"><span class="pre">NCTrainer.afterInference()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#begin.trainers.nodes.NCTrainer.beforeInference"><code class="docutils literal notranslate"><span class="pre">NCTrainer.beforeInference()</span></code></a></li>
@@ -131,6 +138,91 @@
              
   <section id="module-begin.trainers.nodes">
 <span id="node-level-problems"></span><h1>Node-level problems<a class="headerlink" href="#module-begin.trainers.nodes" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="begin.trainers.nodes.NCMinibatchTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NCMinibatchTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/begin/trainers/nodes.html#NCMinibatchTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#begin.trainers.nodes.NCMinibatchTrainer" title="Permalink to this definition"></a></dt>
+<dd><p>The mini-batch trainer (with neighborhood sampler) for handling node classification (NC).</p>
+<dl class="simple">
+<dt>Base:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">NCTrainer</span></code></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="begin.trainers.nodes.NCMinibatchTrainer.afterInference">
+<span class="sig-name descname"><span class="pre">afterInference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_curr_batch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_states</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/begin/trainers/nodes.html#NCMinibatchTrainer.afterInference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#begin.trainers.nodes.NCMinibatchTrainer.afterInference" title="Permalink to this definition"></a></dt>
+<dd><p>The event function to execute some processes right after the inference step (for training).
+We recommend performing backpropagation in this event function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – the returned dictionary from the event function <cite>inference</cite>.</p></li>
+<li><p><strong>model</strong> (<em>torch.nn.Module</em>) – the current trained model.</p></li>
+<li><p><strong>optimizer</strong> (<em>torch.optim.Optimizer</em>) – the current optimizer function.</p></li>
+<li><p><strong>curr_batch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><em>object</em></a>) – the data (or minibatch) for the current iteration.</p></li>
+<li><p><strong>curr_training_states</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – the dictionary containing the current training states.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary containing the information from the <cite>results</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="begin.trainers.nodes.NCMinibatchTrainer.inference">
+<span class="sig-name descname"><span class="pre">inference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_curr_batch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_states</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/begin/trainers/nodes.html#NCMinibatchTrainer.inference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#begin.trainers.nodes.NCMinibatchTrainer.inference" title="Permalink to this definition"></a></dt>
+<dd><p>The event function to execute inference step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>torch.nn.Module</em>) – the current trained model.</p></li>
+<li><p><strong>curr_batch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><em>object</em></a>) – the data (or minibatch) for the current iteration.</p></li>
+<li><p><strong>curr_training_states</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – the dictionary containing the current training states.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary containing the inference results, such as prediction result and loss.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="begin.trainers.nodes.NCMinibatchTrainer.prepareLoader">
+<span class="sig-name descname"><span class="pre">prepareLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curr_dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_training_states</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/begin/trainers/nodes.html#NCMinibatchTrainer.prepareLoader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#begin.trainers.nodes.NCMinibatchTrainer.prepareLoader" title="Permalink to this definition"></a></dt>
+<dd><p>The event function to generate dataloaders from the given dataset for the current task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>curr_dataset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><em>object</em></a>) – The dataset for the current task. Its type is dgl.graph for node-level and link-level problem, and dgl.data.DGLDataset for graph-level problem.</p></li>
+<li><p><strong>curr_training_states</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – the dictionary containing the current training states.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple containing three dataloaders.
+The trainer considers the first dataloader, second dataloader, and third dataloader
+as dataloaders for training, validation, and test, respectively.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="begin.trainers.nodes.NCMinibatchTrainer.processTrainingLogs">
+<span class="sig-name descname"><span class="pre">processTrainingLogs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epoch_cnt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_metric_result</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_stats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_stats</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/begin/trainers/nodes.html#NCMinibatchTrainer.processTrainingLogs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#begin.trainers.nodes.NCMinibatchTrainer.processTrainingLogs" title="Permalink to this definition"></a></dt>
+<dd><p>(Optional) The event function to output the training logs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>task_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – the index of the current task</p></li>
+<li><p><strong>epoch_cnt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – the index of the current epoch</p></li>
+<li><p><strong>val_metric_result</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><em>object</em></a>) – the validation performance computed by the evaluator</p></li>
+<li><p><strong>train_stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – the reduced dictionary containg the final training outcomes.</p></li>
+<li><p><strong>val_stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – the reduced dictionary containg the final validation outcomes.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="begin.trainers.nodes.NCTrainer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NCTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/begin/trainers/nodes.html#NCTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#begin.trainers.nodes.NCTrainer" title="Permalink to this definition"></a></dt>

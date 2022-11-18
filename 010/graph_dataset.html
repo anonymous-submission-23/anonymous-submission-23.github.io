@@ -54,6 +54,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Datasets for Graph-Level Problems</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#mnist">MNIST</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cifar10">CIFAR10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aromaticity">Aromaticity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ogbg-molhiv">ogbg-molhiv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nyc-taxi">NYC-Taxi</a></li>
 </ul>
@@ -160,6 +161,29 @@ which are used separately for Task-IL and accumulated for Class-IL.</p>
 <div><ul class="simple">
 <li><p>Task-IL with 5 tasks</p></li>
 <li><p>Class-IL with 5 tasks</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="aromaticity">
+<h2>Aromaticity<a class="headerlink" href="#aromaticity" title="Permalink to this heading"></a></h2>
+<p>Graphs in <a class="reference external" href="https://lifesci.dgl.ai/api/data.html#pubmed-aromaticity">Aromaticity</a> are molecules consisting of atoms and their chemical bonds.
+The original dataset contains labels representing the number of aromatic atoms in each molecule.
+We divide molecules into 30 groups based on the labels and formulate Task-IL and Class-IL settings with 10 tasks.</p>
+<p>Statistics:</p>
+<ul>
+<li><p>Number of Graphs: 3,868</p></li>
+<li><p>Average Number of Nodes: 29.7</p></li>
+<li><p>Average Number of Edges: 65.4</p></li>
+<li><p>Number of Node Features: 0</p></li>
+<li><p>Number of Classes: 30</p></li>
+<li><p>Supported Incremental Settings:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Task-IL with 10 tasks</p></li>
+<li><p>Class-IL with 10 tasks</p></li>
 </ul>
 </div></blockquote>
 </li>

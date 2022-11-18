@@ -71,6 +71,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Bare Model</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-begin.algorithms.bare.nodes">Node-level Problems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#begin.algorithms.bare.nodes.NCClassILBareMinibatchTrainer"><code class="docutils literal notranslate"><span class="pre">NCClassILBareMinibatchTrainer</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#begin.algorithms.bare.nodes.NCClassILBareTrainer"><code class="docutils literal notranslate"><span class="pre">NCClassILBareTrainer</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#begin.algorithms.bare.nodes.NCDomainILBareTrainer"><code class="docutils literal notranslate"><span class="pre">NCDomainILBareTrainer</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#begin.algorithms.bare.nodes.NCDomainILBareTrainer.processBeforeTraining"><code class="docutils literal notranslate"><span class="pre">NCDomainILBareTrainer.processBeforeTraining()</span></code></a></li>
@@ -166,6 +167,12 @@
 <p>The Bare model follows the incremental learning schemes, but no CL technique is applied to the model.</p>
 <section id="module-begin.algorithms.bare.nodes">
 <span id="node-level-problems"></span><h2>Node-level Problems<a class="headerlink" href="#module-begin.algorithms.bare.nodes" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="begin.algorithms.bare.nodes.NCClassILBareMinibatchTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NCClassILBareMinibatchTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/begin/algorithms/bare/nodes.html#NCClassILBareMinibatchTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#begin.algorithms.bare.nodes.NCClassILBareMinibatchTrainer" title="Permalink to this definition"></a></dt>
+<dd><p>This trainer has the same behavior as <cite>NCMinibatchTrainer</cite>.</p>
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="begin.algorithms.bare.nodes.NCClassILBareTrainer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NCClassILBareTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/begin/algorithms/bare/nodes.html#NCClassILBareTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#begin.algorithms.bare.nodes.NCClassILBareTrainer" title="Permalink to this definition"></a></dt>
@@ -269,8 +276,7 @@ For task-IL, we need to additionally consider task information for the inference
 <dl class="py class">
 <dt class="sig sig-object py" id="begin.algorithms.bare.links.LCClassILBareTrainer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LCClassILBareTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/begin/algorithms/bare/links.html#LCClassILBareTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#begin.algorithms.bare.links.LCClassILBareTrainer" title="Permalink to this definition"></a></dt>
-<dd><p>This trainer has the same behavior as <cite>LCTrainer</cite>.</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="begin.algorithms.bare.links.LCTaskILBareTrainer">
@@ -397,8 +403,7 @@ We need to extend the base function since the output format is slightly differen
 <dl class="py class">
 <dt class="sig sig-object py" id="begin.algorithms.bare.graphs.GCClassILBareTrainer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GCClassILBareTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/begin/algorithms/bare/graphs.html#GCClassILBareTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#begin.algorithms.bare.graphs.GCClassILBareTrainer" title="Permalink to this definition"></a></dt>
-<dd><p>This trainer has the same behavior as <cite>GCTrainer</cite>.</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="begin.algorithms.bare.graphs.GCDomainILBareTrainer">
